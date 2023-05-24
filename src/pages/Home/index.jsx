@@ -6,7 +6,11 @@ import { Movie } from "../../components/Movie";
 
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
+
 export function Home() {
+
+
     return(
         <Container>
             <Header/>

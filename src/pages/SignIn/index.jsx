@@ -4,21 +4,32 @@ import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 
 import backgroundVHS from "../../assets/VHS.png";
 
+import { useState, useEffect } from "react";
+import { useAuth } from "../../hooks/auth";
+
 import { Input } from "../../components/Input";
 import { Logo } from "../../components/Logo";
-import { VerticalLine } from "../../components/VerticalLine";
+import { VerticalLines } from "../../components/VerticalLines";
 import { Button } from "../../components/Button";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function SignIn() {
+
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const { signIn } = useAuth();
+
+    const navigate = useNavigate();
+
+    function handleSignIn(e) {
+        signIn({password, email})
+    }
+
     return(
         <Container>
                 <div className="topLines">
-                    <VerticalLine color={({ theme }) => theme.COLORS.YELLOW}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.ORANGE}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.SALMON}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.PURPLE}/>
+                    <VerticalLines/>
                 </div>
                 
             <Form>
@@ -32,19 +43,21 @@ export function SignIn() {
 
                     <span>Faça seu Login:</span>
                     <Input 
-                        placeholder="Login" 
+                        placeholder="email" 
                         type="text"
-                        icon={AiOutlineUser}/>
+                        icon={AiOutlineUser}
+                        onChange={e => setEmail(e.target.value)}/>
 
                     <Input 
                         placeholder="senha" 
                         type="password"
-                        icon={AiFillLock}/>
+                        icon={AiFillLock}
+                        onChange={e => setPassword(e.target.value)}/>
 
-                    <Button title="entrar"></Button>
+                    <Button title="entrar" onClick={handleSignIn}></Button>
 
                     <p>Não possui cadastro?</p>
-                    <Link to="/register">
+                    <Link to="/users">
                         Criar conta
                     </Link>
 
@@ -53,10 +66,7 @@ export function SignIn() {
             </Form>
 
                 <div className="bottomLines">
-                    <VerticalLine color={({ theme }) => theme.COLORS.YELLOW}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.ORANGE}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.SALMON}/>
-                    <VerticalLine color={({ theme }) => theme.COLORS.PURPLE}/>
+                    <VerticalLines/>    
                 </div>
 
             <VHS>

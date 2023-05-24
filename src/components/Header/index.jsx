@@ -7,7 +7,13 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
+
+
 export function Header() {
+    
+    const { signOut } = useAuth();
+
     return(
         <Container>
             <Logo/>
@@ -17,7 +23,7 @@ export function Header() {
             <Profile>
                 <LogOut>
                     <p>Bell Amancio</p>
-                    <a href="#">Sair</a>
+                    <a href="#" onClick={signOut}>Sair</a>
                 </LogOut>
                 
                 <Link to="/profile">

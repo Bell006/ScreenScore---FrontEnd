@@ -16,9 +16,7 @@ export const Container = styled.div`
 
     .topLines, .bottomLines {
         display: flex;
-        gap: 2rem;
         justify-content: center;
-        align-items: center;
     }
     
     .topLines {
