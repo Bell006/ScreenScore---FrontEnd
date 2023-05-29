@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
             const {user, token} = response.data;
 
             localStorage.setItem("@screenScore:user", JSON.stringify(user));
-            localStorage.setItem("@screenScore:token", JSON.stringify(token));
+            localStorage.setItem("@screenScore:token", token);
 
             api.defaults.headers.common['authorization'] = `Bearer ${token}`;
 
@@ -41,8 +41,30 @@ function AuthProvider({ children }) {
         setData({});
     }
 
-    function updateProfile() {
-        
+    async function updateProfile({ user, avatarFile }) {
+        try {
+            if(avatarFile) {
+                const fileUploadForm = new FormData();
+                fileUploadForm.append("avatar", avatarFile);
+
+                const response = await api.patch("/users/avatar", fileUploadForm);
+                user.avatar = response.data.avatar;
+            }
+
+            await api.put("/users", user);
+            localStorage.setItem("@screenScore:user", JSON.stringify(user));
+            setData({user, token: data.token});
+
+            alert("dados atualizado com sucesso!")
+
+        } catch(error) {
+            if(error.response) {
+                alert(error.response.data.message)
+            } else {
+                alert("Não foi possível atualizar o perfil.")
+                console.log(error)
+            }
+        }
     }
 
 
@@ -50,12 +72,16 @@ function AuthProvider({ children }) {
         const token = localStorage.getItem("@screenScore:token");
         const user = localStorage.getItem("@screenScore:user");
 
+        api.defaults.headers.common['authorization'] = `Bearer ${token}`;
+        
         if(token && user) {
             setData({
                 token,
                 user: JSON.parse(user)
             });
         }
+
+
     }, [])
 
     return (

@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-export function Logo() {
+export function Logo({onClick}) {
     return(
-        <Container>
+        <Container onClick={onClick}>
             ScreenScore
         </Container>
     );

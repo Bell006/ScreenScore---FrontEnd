@@ -14,7 +14,8 @@ export const Content = styled.div`
     grid-area: content;
     height: 100%;
     min-height: 10vh;
-    max-width: 112rem;
+    max-width: 110rem;
+    min-width: 70rem;
 
     display: flex;
     flex-direction: column;
@@ -30,20 +31,28 @@ export const Content = styled.div`
         margin-bottom: 4rem;
 
         display: grid;
+
+        grid-template-columns: 20% 58% 18%;
+        grid-template-areas: "movies search button";
         align-items: center;
-        grid-template-columns: 80% auto;
-        grid-template-areas: "title button";
+
+        gap: 2rem;
+
 
         > h1 {
-            grid-area: title;
-
-            width: 100%;
-            white-space: nowrap;
-
+            grid-area: movies;
             font-weight: 400;
             font-size: 3.2rem;
             line-height: 4.2rem;
+            width: 100%;
+        }
 
+        > Input {
+            grid-area: search;
+        }
+
+        > Button {
+            grid-area: button;
         }
 
     };
@@ -54,6 +63,7 @@ export const Content = styled.div`
         
         gap: 2rem;
 
+        width: 100rem;
         max-height: 70vh;
         overflow-y: auto;
 

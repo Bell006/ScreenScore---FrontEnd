@@ -42,19 +42,22 @@ export function SignIn() {
                 <section>
 
                     <span>Faça seu Login:</span>
-                    <Input 
-                        placeholder="email" 
-                        type="text"
-                        icon={AiOutlineUser}
-                        onChange={e => setEmail(e.target.value)}/>
 
-                    <Input 
-                        placeholder="senha" 
-                        type="password"
-                        icon={AiFillLock}
-                        onChange={e => setPassword(e.target.value)}/>
+                    <div id="logIn">
+                        <Input 
+                            placeholder="email" 
+                            type="text"
+                            icon={AiOutlineUser}
+                            onChange={e => setEmail(e.target.value)}/>
 
-                    <Button title="entrar" onClick={handleSignIn}></Button>
+                        <Input 
+                            placeholder="senha" 
+                            type="password"
+                            icon={AiFillLock}
+                            onChange={e => setPassword(e.target.value)}/>
+
+                        <Button title="entrar" onClick={handleSignIn}></Button>
+                    </div>
 
                     <p>Não possui cadastro?</p>
                     <Link to="/users">

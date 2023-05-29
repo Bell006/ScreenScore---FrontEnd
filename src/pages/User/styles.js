@@ -80,5 +80,9 @@ export const Form = styled.div`
     > :nth-child(2) {
         margin-bottom: 3rem;
     }
+
+    > :nth-child(4) {
+        margin-bottom: 2rem;
+    }
 `;
 

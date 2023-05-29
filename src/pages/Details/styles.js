@@ -12,12 +12,19 @@ export const Container = styled.div`
        height: 3rem;
        border-radius: 50%;
     }
+
+    .delete {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    color: ${({ theme }) => theme.COLORS.SALMON};
+}
+
 `;
 
 export const Content = styled.div`
     grid-area: content;
 
     max-width: 115rem;
+    min-width: 100rem;
 
     margin: 3rem auto;
     padding: 2rem;
@@ -64,7 +71,13 @@ export const Content = styled.div`
     > main p {
         text-align: justify;
         line-height: 2.5rem;
+
+        margin: 0 1.5rem;
     };
+
+    > :nth-child(3) {
+        margin-bottom: 2rem;
+    }
 
 `;
 

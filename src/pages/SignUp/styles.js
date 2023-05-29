@@ -58,6 +58,7 @@ export const Form = styled.form`
         align-items: center;
 
         width: 30rem;
+        gap: 0.8rem;
 
         margin: 6.2rem 0 2rem;
 

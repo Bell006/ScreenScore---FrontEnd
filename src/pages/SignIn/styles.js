@@ -84,6 +84,13 @@ export const Form = styled.form`
             
             margin-top: 1rem;
         }
+
+        #logIn {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+        }
     }
 `;
 

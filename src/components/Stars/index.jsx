@@ -1,7 +1,6 @@
 import { Container, StarContainer } from "./styles";
 import { BsStarHalf, BsStarFill, BsStar } from "react-icons/bs";
 
-import { Fragment } from "react";
 import PropTypes from 'prop-types';
 
 export function Stars({ rating }) {

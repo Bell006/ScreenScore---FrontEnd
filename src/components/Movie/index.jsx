@@ -4,13 +4,19 @@ import { Tag } from "../Tag";
 
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
-export function Movie({data, ...rest}) {
+export function Movie({data, onClick, ...rest}) {
+
+    function removingHTMLTags(description) {
+        const textDescription = new DOMParser().parseFromString(data.description, 'text/html');
+        return textDescription.body.textContent;
+    }
+
     return(
-        <Container>
+        <Container onClick={onClick}>
             <header>
                 <h1>{data.title}</h1>
 
-                <Stars rating={data.rating}/>
+                <Stars rating={Number(data.rating)}/>
             </header>
 
            {
@@ -27,7 +33,7 @@ export function Movie({data, ...rest}) {
            }
 
             <p>
-                {data.description}
+                {removingHTMLTags(data.description)}
             </p>
 
             {

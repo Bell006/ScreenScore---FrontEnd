@@ -3,31 +3,40 @@ import { Container, Profile, LogOut } from "./styles";
 import { Logo } from "../Logo";
 import { Input } from "../Input";
 
-import { AiOutlineSearch } from "react-icons/ai";
+import placeHolderImg from "../../assets/avatar_placeholder.svg";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useEffect, useState } from "react";
 
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 
 export function Header() {
     
-    const { signOut } = useAuth();
+    const { signOut, user } = useAuth();
 
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : placeHolderImg;
+
+    const navigate = useNavigate();
+
+    function handleLogo() {
+        return navigate('/');
+    }
+    
     return(
         <Container>
-            <Logo/>
-
-            <Input type="text" placeholder="Pesquisar pelo título" icon={AiOutlineSearch}/>
+            <Logo onClick={handleLogo} />
 
             <Profile>
                 <LogOut>
-                    <p>Bell Amancio</p>
+                    <p>{user.name}</p>
                     <a href="#" onClick={signOut}>Sair</a>
                 </LogOut>
                 
                 <Link to="/profile">
-                    <img src="https://github.com/bell006.png" alt="User's picture" />
+                    <img src={avatarUrl} alt="User's picture" />
                 </Link>
             </Profile>
         </Container>
