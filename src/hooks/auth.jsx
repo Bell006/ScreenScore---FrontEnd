@@ -3,10 +3,13 @@ import { createContext, useContext } from "react";
 import { useState } from "react";
 import { api } from "../services/api";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
+
+    const navigate = useNavigate();
 
     const [data, setData] = useState({});
 
@@ -37,6 +40,8 @@ function AuthProvider({ children }) {
     function signOut() {
         localStorage.removeItem("@screenScore:user");
         localStorage.removeItem("@screenScore:token");
+
+        navigate("/");
 
         setData({});
     }
