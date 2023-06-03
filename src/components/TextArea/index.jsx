@@ -15,7 +15,7 @@ export function TextArea({ onContentChange }) {
   return (
     <Container>
       <Editor
-        apiKey="yju1eozu3ml9s0ozmwuw0vo8w72u09xj801vdd0hza8ri4tu"
+        apiKey="1wwhf3ehu50wslmpflwh7tuy7da008gvrxpcpv7h4ox34ri3"
         onEditorChange={handleEditorChange}
         placeHolder="O que você tem a dizer sobre o filme?"
         init={{
