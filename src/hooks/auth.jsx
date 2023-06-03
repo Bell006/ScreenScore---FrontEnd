@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
             if(error.response) {
                 alert(error.response.data.message)
             } else {
-                alert("Não foi pssível conectar")
+                alert("Não foi possível conectar")
                 console.log(error)
             }
         }
