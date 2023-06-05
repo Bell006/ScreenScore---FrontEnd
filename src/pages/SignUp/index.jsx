@@ -41,12 +41,6 @@ export function SignUp() {
         });
     }
 
-    function teste() {
-         console.log("foi")
-    }
-
-
-
     return(
         <Container>
                 <div className="topLines">

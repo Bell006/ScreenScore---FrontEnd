@@ -24,6 +24,11 @@ export function Header() {
     function handleLogo() {
         return navigate('/');
     }
+
+    function handleSignOut() {
+        navigate('/');
+        signOut();
+    }
     
     return(
         <Container>
@@ -32,7 +37,7 @@ export function Header() {
             <Profile>
                 <LogOut>
                     <p>{user.name}</p>
-                    <a href="#" onClick={signOut}>Sair</a>
+                    <a href="#" onClick={handleSignOut}>Sair</a>
                 </LogOut>
                 
                 <Link to="/profile">
