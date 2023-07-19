@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    grid-area: header;
     height: 10.5rem;
 
-    grid-area: header;
 
     display: flex;
     align-items: center;

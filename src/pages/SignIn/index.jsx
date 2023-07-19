@@ -4,7 +4,7 @@ import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 
 import backgroundVHS from "../../assets/VHS.png";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
 import { Input } from "../../components/Input";
@@ -12,15 +12,13 @@ import { Logo } from "../../components/Logo";
 import { VerticalLines } from "../../components/VerticalLines";
 import { Button } from "../../components/Button";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function SignIn() {
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const { signIn } = useAuth();
-
-    const navigate = useNavigate();
+    const { signIn, loading } = useAuth();
 
     function handleSignIn(e) {
         signIn({password, email})
@@ -56,7 +54,10 @@ export function SignIn() {
                             icon={AiFillLock}
                             onChange={e => setPassword(e.target.value)}/>
 
-                        <Button title="entrar" onClick={handleSignIn}></Button>
+                      
+                        {
+                            loading ? <Button title="Entrar" loading/> : <Button title="Entrar" onClick={handleSignIn}/>
+                        }
                     </div>
 
                     <p>Não possui cadastro?</p>

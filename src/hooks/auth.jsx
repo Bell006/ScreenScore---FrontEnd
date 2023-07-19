@@ -9,6 +9,7 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
 
     const [data, setData] = useState({});
+    const [loading, setLoading] = useState(false);
 
     async function signIn({email, password}) {
 
@@ -90,6 +91,7 @@ function AuthProvider({ children }) {
             signOut,
             updateProfile,
             user: data.user,
+            loading
             }}>
             {children}
         </AuthContext.Provider>

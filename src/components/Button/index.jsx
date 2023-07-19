@@ -1,9 +1,11 @@
 import { Container } from "./styles";
 
-export function Button({title, className, onClick}) {
+import { Loading } from "../Loading";
+
+export function Button({title, className, onClick, loading = false}) {
     return(
         <Container className={className} type="button" onClick={onClick}>
-            {title}
+            {loading ? <Loading/> : title}
         </Container>
     );
 }
